@@ -37,6 +37,12 @@ export default function toDO() {
       addTask();
     }
   }
+
+  const sort = (tasks) => {
+    return tasks.slice().sort((x, y) => new Date(x.date) - new Date(y.date));
+  }
+
+  const sorted = sort(tasks);
   
   return (
     <div style={{ backgroundColor: '#F6F6F6', height: '100vh', display: 'flex', justifyContent: 'center'}}>
@@ -58,7 +64,7 @@ export default function toDO() {
         </InputGroup>
 
         <ul style={{ padding: '0', listStyleType: 'none' }}>
-          {tasks.map((items, index) => (
+          {sorted.map((items, index) => (
             <li key={index} className='mb-3' style={{ display: 'flex', alignItems: 'center' }}>
               <div className='w-100' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
